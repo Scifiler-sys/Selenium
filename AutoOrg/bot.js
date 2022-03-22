@@ -32,6 +32,7 @@ const timer = 2;
     // const orgNameInput = "#organization_profile_name";
     // await page.click(orgNameInput);
     // await page.keyboard.type(creds.organizationName);
+    // alert("Unfortunately due to that robot checking, you have to do this one manually. You have 5 minutes to finish this part and the bot will take care of the rest");
 
     // //Unfortunately due to that robot checking, you have to do this one manually
     // //You have 5 minute to finish it as well
@@ -41,26 +42,37 @@ const timer = 2;
     //Adding people in Organization automatically
     await ConvertingToJson();
     const usernames = require('./Data/ConvertedJson.json');
+    usernames.Sheet1.shift();
     await page.goto("https://github.com/orgs/"+creds.organizationName+"/people");
 
-    
     await page.click("#js-pjax-container > div > div.container-xl.px-3 > div > div.Layout-main > div > div > div.subnav.org-toolbar.org-toolbar-next > div > details.details-reset.details-overlay.details-overlay-dark > summary");
     
-    await page.waitForSelector("#org-invite-complete-input").then(async () => {
-        await page.click("#org-invite-complete-input");
-        await page.keyboard.type(usernames.Sheet1[1].username);
-        await page.screenshot({path:"test.png"});
-        await page.waitForSelector("#org-invite-complete-results-option-0").then(async () => {
-            await page.click("#org-invite-complete-results-option-0");
-            await page.click("#js-pjax-container > div > div.container-xl.px-3 > div > div.Layout-main > div > div > div.subnav.org-toolbar.org-toolbar-next > div > details.details-reset.details-overlay.details-overlay-dark > details-dialog > form > div > div > button");
+    for(const user of usernames.Sheet1)
+    {
+        await page.waitForSelector("#org-invite-complete-input").then(async () => {
+            console.log(user);
+            await page.click("#org-invite-complete-input");
+            await page.keyboard.type(user.username);
+            await page.screenshot({path:"test.png"});
+    
+            await page.waitForSelector("#org-invite-complete-results-option-0").then(async () => {
+                await page.click("#org-invite-complete-results-option-0");
+                await page.click("#js-pjax-container > div > div.container-xl.px-3 > div > div.Layout-main > div > div > div.subnav.org-toolbar.org-toolbar-next > div > details.details-reset.details-overlay.details-overlay-dark > details-dialog > form > div > div > button");
+            });
+    
+            await page.waitForSelector("#js-pjax-container > div.add-member-wrapper.settings-next > form > div > div > button").then(async () => {
+                await page.click("#js-pjax-container > div.add-member-wrapper.settings-next > form > div > div > button");
+            });
+    
+            await page.waitForSelector("#js-pjax-container > div > div.container-xl.px-3 > div > div.Layout-main > div > div > div.subnav.org-toolbar.org-toolbar-next > div > details > summary").then(async () => {
+                await page.click("#js-pjax-container > div > div.container-xl.px-3 > div > div.Layout-main > div > div > div.subnav.org-toolbar.org-toolbar-next > div > details > summary");
+            })
         });
+        
+    }
 
-        await page.waitForSelector("#js-pjax-container > div.add-member-wrapper.settings-next > form > div > div > button").then(async () => {
-            await page.click("#js-pjax-container > div.add-member-wrapper.settings-next > form > div > div > button");
-        });
-    });
 
-    await page.screenshot({path:"test.png"});
+    await page.screenshot({path:"test.png"}); 
 
     await browser.close();
 })();
