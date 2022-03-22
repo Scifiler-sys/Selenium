@@ -26,6 +26,7 @@ const timer = 2;
         await page.waitForNavigation()
     ]);
     
+    //=====================You can uncomment this if you already created an organization=====================
     //Creating Organization
     await page.goto("https://github.com/account/organizations/new?coupon=&plan=team_free");
     
@@ -37,6 +38,8 @@ const timer = 2;
     //Unfortunately due to that robot checking, you have to do this one manually
     //You have 5 minute to finish it as well
     await page.waitForNavigation({timeout: 300000});
+
+    //=====================You can uncomment this if you already created an organization=====================
 
     
     //Adding people in Organization automatically
