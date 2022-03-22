@@ -11,7 +11,7 @@
     "organizationName" : "Add your organization name here"
 }
 ```
-* CLI command process
+* CLI command process (make sure you are in AutoOrg folder)
 ```C#
 npm install //To get the dependencies back
 node ./bot.js //To run the bot
