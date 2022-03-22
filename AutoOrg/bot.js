@@ -12,7 +12,7 @@ const timer = 2;
     //Dom Selecting
     const userInput = "#login_field";
     const passInput = "#password";
-    const loginButton = "#login > div.auth-form-body.mt-3 > form > div > input.btn.btn-primary.btn-block.js-sign-in-button"
+    const loginButton = "#login > div.auth-form-body.mt-3 > form > div > input.btn.btn-primary.btn-block.js-sign-in-button";
 
     //Logging in operation
     await page.click(userInput);
