@@ -2,5 +2,8 @@
   "dependencies": {
     "convert-excel-to-json": "^1.7.0",
     "puppeteer": "^13.5.1"
+  },
+  "scripts": {
+    "start": "node ./bot.js"
   }
 }

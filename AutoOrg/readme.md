@@ -14,7 +14,7 @@
 * CLI command process (make sure you are in AutoOrg folder)
 ```C#
 npm install //To get the dependencies back
-node ./bot.js //To run the bot
+npm start //To run the bot
 ```
 
 # Potential things that will fail the automation
