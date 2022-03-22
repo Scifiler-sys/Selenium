@@ -26,3 +26,7 @@ npm start //To run the bot
 # Future implementation
 * Checking which users already exist in organization
 * Ignore incorrect usernames and move on to the next one
+
+# Troubleshoot
+* Ubunto/Linux CLI won't work properly, you need extra configuration to setup chromium right
+    * Just use windows powershell instead
