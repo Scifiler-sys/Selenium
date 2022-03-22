@@ -26,20 +26,20 @@ const timer = 2;
         await page.waitForNavigation()
     ]);
     
-    //=====================You can comment this if you already created an organization=====================
-    //Creating Organization
-    await page.goto("https://github.com/account/organizations/new?coupon=&plan=team_free");
+    //=====================You can uncomment this if you already created an organization=====================
+    // //Creating Organization
+    // await page.goto("https://github.com/account/organizations/new?coupon=&plan=team_free");
     
-    const orgNameInput = "#organization_profile_name";
-    await page.click(orgNameInput);
-    await page.keyboard.type(creds.organizationName);
-    alert("Unfortunately due to that robot checking, you have to do this one manually. You have 5 minutes to finish this part and the bot will take care of the rest");
+    // const orgNameInput = "#organization_profile_name";
+    // await page.click(orgNameInput);
+    // await page.keyboard.type(creds.organizationName);
+    // alert("Unfortunately due to that robot checking, you have to do this one manually. You have 5 minutes to finish this part and the bot will take care of the rest");
 
-    //Unfortunately due to that robot checking, you have to do this one manually
-    //You have 5 minute to finish it as well
-    await page.waitForNavigation({timeout: 300000});
+    // //Unfortunately due to that robot checking, you have to do this one manually
+    // //You have 5 minute to finish it as well
+    // await page.waitForNavigation({timeout: 300000});
 
-    //=====================You can comment this if you already created an organization=====================
+    //=====================You can uncomment this if you already created an organization=====================
 
     
     //Adding people in Organization automatically

@@ -3,7 +3,8 @@
 
 # Setup process
 1. You need to edit the excel sheet in Data folder to add in the github usernames you need to add
-2. You need to create credentials.json inside of Data folder
+2. Create an organization in github
+3. You need to create credentials.json inside of Data folder
 ```json
 {
     "username": "Add github username here",
@@ -11,7 +12,7 @@
     "organizationName" : "Add your organization name here"
 }
 ```
-3. CLI command process (make sure you are in AutoOrg folder)
+4. CLI command process (make sure you are in AutoOrg folder)
 ```C#
 npm install //To get the dependencies back
 npm start //To run the bot
