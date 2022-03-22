@@ -1,5 +1,5 @@
 # Project description
-* Are you like me? Tired of adding people in your organization especially when you have more that 20 ppl to add?
+* Are you like me? Tired of adding people in your organization especially when you have more than 20 ppl to add?
 * Well here comes the bot! It will add all the username you specified in an excel sheet for you
 * Just provide your credentials!n
 
