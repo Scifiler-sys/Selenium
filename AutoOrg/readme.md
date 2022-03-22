@@ -11,7 +11,11 @@
     "organizationName" : "Add your organization name here"
 }
 ```
-* 
+* CLI command process
+```C#
+npm install //To get the dependencies back
+node ./bot.js //To run the bot
+```
 
 # Potential things that will fail the automation
 * Github username is incorrect
