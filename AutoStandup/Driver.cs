@@ -72,9 +72,27 @@ public class Driver
         string generalNotesInput = @"//*[@id='form-container']/div/div/div[1]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/textarea";
         string listOfInitiativeInput = @"//*[@id='form-container']/div/div/div[1]/div/div[1]/div[2]/div[2]/div[3]/div/div[2]/div/div/textarea";
         string workLoadRadioButton = @"//*[@id='form-container']/div/div/div[1]/div/div[1]/div[2]/div[2]/div[4]/div/div[2]/div/div[3]/div/label/input";
+        string nextButton = @"//*[@id='form-container']/div/div/div[1]/div/div[1]/div[2]/div[4]/div[1]/button[2]/div";
 
         _driver.FindElement(By.XPath(generalNotesInput))
             .SendKeys(_config["GeneralNote"]);
+
+        //Logic to add commas when there is more
+        string initiatives = "";
+        int cnt = 1;
+        foreach (var item in _config.GetSection("Initiatives").Get<string[]>())
+        {
+            initiatives += item + (_config.GetSection("Initiatives").Get<string[]>().ToArray().Length > cnt++ ? ", " :"");
+        }
+        
+        _driver.FindElement(By.XPath(listOfInitiativeInput))
+            .SendKeys(initiatives);
+        
+        _driver.FindElement(By.XPath(workLoadRadioButton))
+            .Click();
+
+        // _driver.FindElement(By.XPath(nextButton))
+        //     .Click();
     }
 
     public int WeekCalculation()

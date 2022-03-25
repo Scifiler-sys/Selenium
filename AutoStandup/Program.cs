@@ -8,8 +8,7 @@ using System.Diagnostics;
 
 Driver chromeBrowser = new Driver();
 
-// chromeBrowser.FirstPage();
-// chromeBrowser.SecondPage();
+chromeBrowser.FirstPage();
+chromeBrowser.SecondPage();
+chromeBrowser.ThirdPage();
 
-
-// Console.WriteLine(chromeBrowser.WeekCalculation());
