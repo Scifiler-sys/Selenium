@@ -51,7 +51,7 @@ public class Driver
             .SendKeys(_config["AssociateNumber"]);
 
         _driver.FindElement(By.XPath(saleForceMatch))
-            .SendKeys(bool.Parse(_config["SaleForceMatch"]) ? "N/A" : "");
+            .SendKeys(bool.Parse(_config["SaleForceMatch"]) ? "N/A" : CommaGenerator(_config.GetSection("SaleForceReasons").Get<string[]>()));
         
         _driver.FindElement(By.XPath(howManyWarnInput))
             .SendKeys(_config["Warning"]);
@@ -78,12 +78,7 @@ public class Driver
             .SendKeys(_config["GeneralNote"]);
 
         //Logic to add commas when there is more
-        string initiatives = "";
-        int cnt = 1;
-        foreach (var item in _config.GetSection("Initiatives").Get<string[]>())
-        {
-            initiatives += item + (_config.GetSection("Initiatives").Get<string[]>().ToArray().Length > cnt++ ? ", " :"");
-        }
+        string initiatives = CommaGenerator(_config.GetSection("Initiatives").Get<string[]>());
         
         _driver.FindElement(By.XPath(listOfInitiativeInput))
             .SendKeys(initiatives);
@@ -95,6 +90,18 @@ public class Driver
         //     .Click();
     }
 
+    //Will format arrays into data1, data2, data3,..., dataN
+    public string CommaGenerator(string[] p_array)
+    {
+        string result = "";
+        int cnt = 1;
+        foreach (var item in p_array)
+        {
+            result += item + (p_array.Length > cnt++ ? ", " :"");
+        }
+
+        return result;
+    }
     public int WeekCalculation()
     {
         int[] nums = _config["DateStartedBatch"].Split("/").Select(Int32.Parse).ToArray();
