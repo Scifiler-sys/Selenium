@@ -11,4 +11,5 @@ using System.Diagnostics;
 
 Driver driver = new Driver();
 
+driver.Login();
 driver.GetEmails();

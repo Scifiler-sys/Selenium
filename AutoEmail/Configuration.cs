@@ -21,4 +21,9 @@ public class Configuration
     {
         return _config["password"];
     }
+
+    public string GetTrainingUrl()
+    {
+        return _config["reportLink"];
+    }
 }
