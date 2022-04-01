@@ -44,11 +44,12 @@ public class Driver
         //Switching to the iframe since Saleforce uses it
         _driver.SwitchTo().Frame(iframe);
 
-        var tableRows = _driver.FindElements(By.XPath(@"//*[@id='report-00O0P0000045vl3UAA']/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div[1]/div/div/div/div[4]/div/div/div/div/div/div/div[2]/table/tbody/tr"));
+        string reportXPath = @"//*[@id='report-00O0P0000045vl3UAA']/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div[1]/div/div/div/div[4]/div/div/div/div/div/div/div[2]/table/tbody/tr";
+        var tableRows = _driver.FindElements(By.XPath(reportXPath));
 
         while (tableRows.Count < 5)
         {
-            tableRows = _driver.FindElements(By.XPath(@"//*[@id='report-00O0P0000045vl3UAA']/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div[1]/div/div/div/div[4]/div/div/div/div/div/div/div[1]/table/tbody/tr"));
+            tableRows = _driver.FindElements(By.XPath(reportXPath));
         }
         //Stores all valid emails into _validEmails List
         for (int row = 0; row < tableRows.Count-2; row++)
