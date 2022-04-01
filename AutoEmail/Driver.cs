@@ -44,14 +44,13 @@ public class Driver
         //Switching to the iframe since Saleforce uses it
         _driver.SwitchTo().Frame(iframe);
 
-        //                  //*[@id="report-00O0P0000045vl3UAA"]/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div[1]/div/div/div/div[4]/div/div/div/div/div/div/div[2]/table/tbody
-        string reportXPath = @"//*[@id='report-00O0P0000045vl3UAA']/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div[1]/div/div/div/div[4]/div/div/div/div/div/div/div[1]/table/tbody/tr";
+        // OR                 //*[@id="report-00O0P0000045vl3UAA"]/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div[1]/div/div/div/div[4]/div/div/div/div/div/div/div[1]/table/tbody
+        // OR                 //*[@id="report-00O0P0000045vl3UAA"]/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div[1]/div/div/div/div[4]/div/div/div/div/div/div/div[2]/table/tbody
+        string reportXPath = @"//tbody/tr";
         var tableRows = _driver.FindElements(By.XPath(reportXPath));
 
-        while (tableRows.Count < 5)
-        {
-            tableRows = _driver.FindElements(By.XPath(reportXPath));
-        }
+        Console.WriteLine(tableRows.Count);
+
         //Stores all valid emails into _validEmails List
         for (int row = 0; row < tableRows.Count-2; row++)
         {
@@ -66,7 +65,7 @@ public class Driver
             //Catch block will refind the tableRows element again in HTML followed by finding the email
             catch (OpenQA.Selenium.StaleElementReferenceException)
             {
-                tableRows = _driver.FindElements(By.XPath(@"//*[@id='report-00O0P0000045vl3UAA']/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div[1]/div/div/div/div[4]/div/div/div/div/div/div/div[1]/table/tbody/tr"));
+                tableRows = _driver.FindElements(By.XPath(reportXPath));
                 item = tableRows[row].FindElement(By.XPath("//*[@id='full-data-grid-8-row"+ row +"-col2']"));
             }
 
