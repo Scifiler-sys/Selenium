@@ -43,7 +43,7 @@ public class Driver
 
         //Switching to the iframe since Saleforce uses it
         _driver.SwitchTo().Frame(iframe);
-        var title = _driver.FindElement(By.XPath(@"//*[@id='report-00O0P0000045vl3UAA']/div/div[1]/div[1]/div[1]/div[1]/div/div[2]/div/div/h1/span[2]"));
+
         var tableRows = _driver.FindElements(By.XPath(@"//*[@id='report-00O0P0000045vl3UAA']/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div[1]/div/div/div/div[4]/div/div/div/div/div/div/div[2]/table/tbody/tr"));
 
         while (tableRows.Count < 5)
@@ -91,7 +91,6 @@ public class Driver
             .Click();
 
         //Setting Dom Elements
-        ////*[@id='docking_InitVisiblePart_0']/div[1]/div[1]/div[1]/div/div[4]/div/div/div[1]
         var toInput = _driver.FindElement(By.XPath(@"//*[@id='sentinel']"));
         var subjectInput = _driver.FindElement(By.XPath(@"//*[@aria-label='Add a subject']"));
         var bodyInput = _driver.FindElement(By.XPath("//*[@aria-label='Message body']"));
