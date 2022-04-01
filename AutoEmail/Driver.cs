@@ -106,7 +106,6 @@ public class Driver
         //Typing the rest of the email
         subjectInput.SendKeys("Welcome To Revature!");
 
-        
 
         bodyInput.SendKeys(@"
 Good Day! 
