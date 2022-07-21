@@ -1,4 +1,1 @@
-bin
-obj
-appsettings.json
-credentials.json
+__init__.py
