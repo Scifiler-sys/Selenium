@@ -26,6 +26,8 @@ public class Driver
         //Setting DOM Elements
         string radioButton = @"//*[@id='form-container']/div/div/div[1]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/label/input";
         string dropDownWeek = @"//*[@id='SelectId_0_placeholder']";
+        ////*[@id="SelectId_0"]/div[2]/div[1]
+        /// ////*[@id="SelectId_0"]/div[2]/div[4]
         string dropDownSelect =@"//*[@id='SelectId_0']/div[2]/div[" + (WeekCalculation()+2) + "]";
         string nextButton = @"//*[@id='form-container']/div/div/div[1]/div/div[1]/div[2]/div[3]/div[1]/button/div";
 
@@ -107,6 +109,15 @@ public class Driver
         int[] nums = _config["DateStartedBatch"].Split("/").Select(Int32.Parse).ToArray();
         DateTime date = new DateTime(nums[0],nums[1],nums[2]);
         TimeSpan diffDate = DateTime.Now - date;
-        return (int)Math.Ceiling(diffDate.Days/7.0);
+
+        int numberWeek = (int)Math.Ceiling(diffDate.Days/7.0);
+        if (numberWeek >= 12)
+        {
+            return -1;
+        }
+        else
+        {
+            return numberWeek;
+        }
     }
 }

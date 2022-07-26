@@ -59,6 +59,7 @@ public class Driver
             userInput.SendKeys(item);
             userOption = _driver.FindElement(By.XPath(firstChoice));
             
+            //Recheck to see if it finds the element if it somehow disappeared
             try
             {
                 while (userOption.Text.Trim() == "")
@@ -73,6 +74,7 @@ public class Driver
                 userOption = _driver.FindElement(By.XPath(firstChoice));
             }
 
+            //When github member doesn't exist
             if (userOption.Text.Contains("isn’t a GitHub member"))
             {
                 Console.BackgroundColor = ConsoleColor.Red;
@@ -93,5 +95,21 @@ public class Driver
         }
 
         completeButton.Click();
+    }
+
+    /// <summary>
+    /// Used for after invitation and on a different page
+    /// </summary>
+    public void AutoInvite2()
+    {
+        _driver.Navigate().GoToUrl($"https://github.com/orgs/${_config.OrganizationName}/people");
+
+        //Setting DOM elements
+        var InviteButton = _driver.FindElement(By.XPath("//*[text()='Invite member']"));
+
+        InviteButton.Click();
+
+        var usernameSearch = _driver.FindElement(By.XPath("//*[@id='org-invite-complete-input']"));
+        usernameSearch.SendKeys("");
     }
 }

@@ -26,4 +26,5 @@ public class Configuration
             return _config["contactEmail"];
         } 
     }
+    
 }
