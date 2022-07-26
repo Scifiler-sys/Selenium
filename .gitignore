@@ -1,2 +1,4 @@
 __init__.py
 .DS_Store
+*.pyc
+screen.png

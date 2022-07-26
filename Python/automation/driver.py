@@ -1,17 +1,18 @@
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 
 def start_driver():
     print('starting chrome driver...')
-
-    service = Service(executable_path="./data/chromedriver")
-    options = Options()
+    options = webdriver.ChromeOptions()
     options.headless = True
-    driver = webdriver.Chrome(service=service)
+
+    driver = webdriver.Chrome(options=options, executable_path="./data/chromedriver")
 
     return driver
 
 def open_google():
     driver = start_driver()
-    driver.get("")
+    driver.get("https://www.google.com/?client=safari")
+
+    driver.save_screenshot("./data/screen.png")
+
+    driver.quit()
